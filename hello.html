@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>REACT! REACT! REACT!</title>
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>        
+        <style>
+            #content {
+                padding: 50px;
+                background-color: #EEE;
+            }
+            #content h1 {
+                font-size: 144px;
+                font-family: sans-serif;
+                color: #0080A8;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="anchor"><h1>Anchor1</h1></div>
+        <div id="content"></div>
+        <div id="anchor"><h1>Anchor2</h1></div>
+        <script type="text/babel">
+            class HelloWorld extends React.Component {
+                render () {
+                    return <p>Hello {this.props.greetTarget}!</p>;
+                }
+            }
+            class Buttonify extends React.Component {
+                render () {
+                    console.log(this.props.children)
+                    return (
+                        <div>
+                            <button type={this.props.behavior}>{this.props.children}</button>
+                        </div>
+                    );
+                }
+            }
+            var destination = document.querySelector("#content");
+            ReactDOM.render(
+                <div>
+                    <Buttonify behavior="submit"><HelloWorld greetTarget="Batman"/></Buttonify>
+                    <HelloWorld greetTarget="Ironman"/>
+                </div>,
+                destination
+            );
+        </script>
+    </body>
+</html>

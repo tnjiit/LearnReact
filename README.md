@@ -1,6 +1,12 @@
 # LearnReact
 Walking through coding examples of LearnReact
 
+#02/16/2024
+
+1. this.props in the React Component allows access to:
+  1. Parameters passed in the tags.
+  2. children - Components within the tags.
+
 ## 02/15/2024
 This is me learning React by following the examples and steps listed in "Learning React" by Kirupa Chinnathambi.
 
