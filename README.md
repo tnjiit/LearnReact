@@ -9,6 +9,9 @@ Walking through coding examples of LearnReact
     - In the constructor, bind this to the relevant methods.
     - Call setState somewhere
     - React Component offers componentDidMount when the Component was rendered first.
+2. When creating dynamic list of React.Component:
+    - Make sure you setup key attribute with a unique identifier.
+    - Special attributes like key, ref do not get passed down to children in the props object.
 
 ## 02/16/2024
 
