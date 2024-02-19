@@ -1,6 +1,13 @@
 # LearnReact
 Walking through coding examples of LearnReact
 
+#02/18/2024
+1. State handling with React.
+  1. In the constructor, setup this.state
+  2. In the constructor, bind this to the relevant methods.
+  3. Call setState somewhere
+  4. React Component offers componentDidMount when the Component was rendered first.
+
 #02/16/2024
 
 1. this.props in the React Component allows access to:
