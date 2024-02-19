@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Events And React!</title>
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>                
+        <style>
+            #container {
+                padding: 50px;
+                background-color: #FFFFFF;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/babel">
+            class Counter extends React.Component {
+                render() {
+                    let textStyle = {
+                        fontSize: 72,
+                        fontFamily: "sans-serif",
+                        color: "#030303",
+                        fontWeight: "bold",
+                    };
+
+                    return (
+                        <div style={textStyle}>
+                            {this.props.display}
+                        </div>
+                    );
+                }
+            }
+
+            class CounterParent extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                        count: 0,
+                    };
+                    this.increase = this.increase.bind(this);
+                }
+
+                increase(event) {
+                    let increase = 1;
+                    if (event.shiftKey) {
+                        increase = 10;
+                    }
+                    this.setState(
+                        {
+                            count: this.state.count + increase,
+                        }
+                    );
+                }
+
+                render() {
+                    let backgroundStyle = {
+                        padding: 50,
+                        backgroundColor: "#FFC53A",
+                        width: 250,
+                        height: 100,
+                        borderRadius: 10,
+                        textAlign: "center",
+                    };
+
+                    let buttonStyle = {
+                        fontSize: "1em",
+                        width: 30,
+                        height: 30,
+                        fontFamily: "sans-serif",
+                        color: "#030303",
+                        fontWeight: "bold",
+                        lineHeight: "3px",
+                        textAlign: "center",
+                    };
+
+                    return (
+                        <div style={backgroundStyle}>
+                            <Counter display={this.state.count}/>
+                            <button onClick={this.increase} style={buttonStyle}>+</button>                            
+                        </div>
+                    );
+                }
+            }
+
+            let destination = document.querySelector("#container");
+            ReactDOM.render(
+                <div>
+                    <CounterParent/>
+                </div>,
+                destination
+            );
+        </script>
+    </body>
+</html>

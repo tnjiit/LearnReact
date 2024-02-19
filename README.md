@@ -13,6 +13,14 @@ Walking through coding examples of LearnReact
     - Make sure you setup key attribute with a unique identifier.
     - Special attributes like key, ref do not get passed down to children in the props object.
 
+3. Events in React
+    - Events can not be defined on React Components.
+    - Events need to be defined on the HTML children
+    - addEventListener and removeEventListener needs to be called on componentDidMount and componentWillUnmount.
+    - In JS, this in event handler points to the source on which the event listener was bound: source.addEventListener(event, handler, capture/bubble);
+    - In React, this is undefined unless you do: this.handler = this.handler.bind(this); in the constructor of the component. Then this refers to the ReactComponent: window.addEventListener(event, this.handler, capture/bubble);
+    - In React, event passed to Event Handler is of SyntheticEvent type that is a React Library object and not the Javascript event type.
+
 ## 02/16/2024
 
 1. this.props in the React Component allows access to:
