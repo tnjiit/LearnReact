@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Component Lifecycles</title>
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>        
+        <style>
+            #container {
+                padding: 50px;
+                background-color: #FFFFFF;
+            }
+        </style>        
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/babel">
+            class Counter extends React.Component {
+                render() {
+                    let textStyle = {
+                        fontSize: 72,
+                        fontFamily: "sans-serif",
+                        color: "#030303",
+                        fontWeight: "bold",
+                    };
+
+                    return (
+                        <div style={textStyle}>
+                            {this.props.count}
+                        </div>
+                    );
+                }
+            }
+
+            class ParentCounter extends React.Component {
+                constructor(props) {
+                    super(props);
+                    console.log("constructor");
+                    this.state = {
+                        count: 0,
+                    };
+                    this.increment = this.increment.bind(this);
+                }
+
+                increment(event) {
+                    this.setState(
+                        {
+                            count: this.state.count + 1,
+                        }
+                    );
+                }
+
+                componentWillUpdate(newProps, newState){
+                    console.log("componentWillUpdate", newProps,newState);
+                }
+
+                componentDidUpdate(newProps, newState){
+                    console.log("compoentDidUpdate", newProps,newState);
+                }
+
+                componentWillMount(newProps, newState){
+                    console.log("componentWillMount", newProps,newState);
+                }
+
+                componentDidMount(newProps, newState){
+                    console.log("componentDidUpdate", newProps,newState);
+                }
+
+                componentWillUnmount(newProps, newState){
+                    console.log("componentWillUnmount", newProps,newState);
+                }
+
+                shouldComponentUpdate(newProps, newState){
+                    console.log("shouldComponentUpdate", newProps,newState, destination);
+                    if (newState.count < 5) {
+                        return true;
+                    }
+                    ReactDOM.unmountComponentAtNode(destination);
+                    return false;
+                }
+
+                componentWillReceiveProps(newProps, newState){
+                    console.log("componentWillReceiveProps",newProps,newState);
+                }
+
+                render() {
+                    let buttonStyle = {
+                        fontSize: "1em",
+                        width: 30,
+                        height: 30,
+                        fontFamily: "sans-serif",
+                        color: "#030303",
+                        fontWeight: "bold",
+                        lineHeight: "3px",
+                        textAlign: "center",
+                    };
+
+                    return (
+                        <div>
+                            <Counter count={this.state.count} />
+                            <button onClick={this.increment} style={buttonStyle}>+</button>
+                        </div>                        
+                    )
+                }
+            }
+
+            let destination = document.querySelector("#container");
+            ReactDOM.render(
+                <div>
+                    <ParentCounter/>
+                </div>,
+                destination
+            )
+        </script>
+    </body>
+</html>

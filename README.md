@@ -2,6 +2,30 @@
 
 Walking through coding examples of LearnReact
 
+## 0219/2024
+
+1. Component Lifecycle
+    1. Initial Rendering Phase:
+        1. Default Props
+        2. Get State (constructor)
+        3. componentWillMount() <- Do not call setState
+        4. render()
+        5. componentDidMount()
+    2. Updating Phase:
+        1. State Update:
+            1. shouldComponentUpdate(newProp, newState)
+            2. componentWillUpdate(newProp, newState) <- Do not call setState
+            3. render()
+            4. componentDidUpdate(prevProp, prevState)
+        2. Prop Update:
+            1. componentWillRecieveProps(newProp)
+            2. shouldComponentUpdate(newProp, newState)
+            3. componentWillUpdate(newProp, newState)
+            4. render()
+            5. componentDidUpdate(prevProp, prevState)
+    3. Unmounting Phase:
+        1. componentWillUnmount()
+
 ## 02/18/2024
 
 1. State handling with React.
