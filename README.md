@@ -2,7 +2,12 @@
 
 Walking through coding examples of LearnReact
 
-## 0219/2024
+## 02/21/2024
+
+1. If you want to supply something from html to React Component:ref
+2. ReactDOM.createPortal(<appending jsx>, element) Vs ReactDOM.render(<replacing jsx>, element)
+
+## 02/19/2024
 
 1. Component Lifecycle
     1. Initial Rendering Phase:

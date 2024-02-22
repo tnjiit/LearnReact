@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Accessing DOM elements</title>
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>        
+        <style>
+            #container {
+                padding: 50px;
+                background-color: #FFFFFF;
+            }
+            #colorHeading {
+                padding: 0;
+                margin: 50px;
+                margin-bottom: -20px;
+                font-family: sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="colorHeading">Colorizer</h1>
+        <div id="container">
+        </div>
+        <script type="text/babel">
+            var heading = document.querySelector("#colorHeading");
+            var destination = document.querySelector("#container");
+
+            class ColorSquareComponent extends React.Component {
+                render() {
+                    let colorSquareStyle = {
+                        width: "242px",
+                        height: "242px",
+                        marginBottom: "15px",
+                        boxShadow: "0px 0px 25px 0px #333333",                            
+                        backgroundColor: this.props.bgColor,
+                    };
+
+                    return (
+                        <div style={colorSquareStyle}>
+                            <h1>Content</h1>
+                        </div>
+                    );
+                }
+            }
+
+            class ColorLabel extends React.Component {
+                render() {
+                    return ReactDOM.createPortal(
+                        ": " + this.props.color,
+                        heading
+                    )
+                }
+            }
+
+            class ParentComponent extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                        color: "yellow",
+                    };
+                    this.setNewColor = this.setNewColor.bind(this);
+                    this.colorValue = this.colorValue.bind(this);
+                }
+
+                colorValue(event) { this.setState(
+                    {color: event.target.value });
+                }
+
+                setNewColor(event) { 
+                    this.setState({color: this.state.color});
+                    this._input.value = "";
+                    this._input.focus();
+                    event.preventDefault();
+                }
+
+                render() {
+                    let commonStyle = {
+                        padding: "10px",
+                        fontSize: "16px",
+                    };
+
+                    let buttonStyle = {
+                        width: "50px",
+                        margin: "10px",
+                        backgroundColor: "#666666",
+                        color: "#FFFFFF",
+                        border: "2px solid #666666",
+                        ...commonStyle
+                    };
+
+                    let inputStyle = {
+                        border: "2px solid #CCCCCC",
+                        ...commonStyle
+                    };
+
+                    var self = this;
+
+                    return (
+                        <div>
+                            <ColorSquareComponent bgColor={this.state.color}/>
+                            <form onSubmit={this.setNewColor}>
+                                <input 
+                                    style={inputStyle} 
+                                    placeholder="Enter a color value"
+                                    ref={
+                                        function(element) {
+                                            console.log("Setting element");
+                                            self._input = element;
+                                        }
+                                    }
+                                    id="input"
+                                    onChange={this.colorValue}
+                                >
+                                </input>
+                                <button style={buttonStyle} type="submit" id="button">go</button>
+                            </form>
+                            <ColorLabel color={this.state.color}/>
+                        </div>
+                    );
+                }
+            }
+
+            ReactDOM.render(
+                <ParentComponent/>,
+                destination
+            );
+        </script>
+    </body>
+</html>
