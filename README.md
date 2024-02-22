@@ -2,6 +2,39 @@
 
 Walking through coding examples of LearnReact
 
+# 02/22/2024
+
+1. There are 2 options to make a React Webpage:
+    1. Let the browser (client) convert JSX to JS at runtime - Slower but less ramp.
+        To do this, we need to add the following scripts in the index.html:
+
+            <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+            <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+            <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    2. Convert the JSX to JS and only commit the JS code:
+
+            npm install -g create_react_app
+            create_react_app <APP>
+            // index.html must go in <APP>/public folder
+            // index.js and index.css must go in <APP>/src folder
+            npm start <- Runs the test server
+            npm build run <- Transpiles and generates final html and js files in <APP>/build directory
+
+2. To get data from outside the app:
+
+        componentDidMount(prevProp, prevState) {
+            let xhr = new XMLHttpRequest("<HTTP_VERB>", "https://address", true);
+            xhr.addEventListener("readystatechange", <EventHandler>, <trueForPropogate>);
+            xhr.send();
+        }
+
+        <EventHandler> (event) {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                let response = JSON.parse(xhr.responseText);
+            }
+        }
+
 ## 02/21/2024
 
 1. If you want to supply something from html to React Component:ref
