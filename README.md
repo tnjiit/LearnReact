@@ -2,7 +2,7 @@
 
 Walking through coding examples of LearnReact
 
-# 02/22/2024
+## 02/22/2024
 
 1. There are 2 options to make a React Webpage:
     1. Let the browser (client) convert JSX to JS at runtime - Slower but less ramp.
@@ -38,7 +38,7 @@ Walking through coding examples of LearnReact
 ## 02/21/2024
 
 1. If you want to supply something from html to React Component:ref
-2. ReactDOM.createPortal(<appending jsx>, element) Vs ReactDOM.render(<replacing jsx>, element)
+2. ReactDOM.createPortal(<APPENDING_JSX>, element) Vs ReactDOM.render(<REPLACING_JSX>, element)
 
 ## 02/19/2024
 
