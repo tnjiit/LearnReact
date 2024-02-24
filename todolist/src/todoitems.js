@@ -1,4 +1,5 @@
 import React from "react";
+import FlipMove from "react-flip-move";
 
 class TodoItems extends React.Component {
     render() {
@@ -19,7 +20,9 @@ class TodoItems extends React.Component {
         );
         return (
             <ol className="thelist">
-                {listItems}
+                <FlipMove duration={250} easing="ease-out">
+                    {listItems}
+                </FlipMove>                    
             </ol>
         );
     }
