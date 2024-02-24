@@ -5,7 +5,16 @@ class TodoItems extends React.Component {
         var todoEntries = this.props.entries;
         var listItems = todoEntries.map(
             (item) => {
-                return <li key={item[0]}>{item[1]}</li>;
+                return (
+                    <li 
+                        key={item[0]} 
+                        onClick={
+                            (event) => {this.props.deleteItem(item[0])}
+                        }
+                    >
+                        {item[1]}
+                    </li>
+                );
             }
         );
         return (

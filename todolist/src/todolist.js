@@ -9,6 +9,7 @@ class TodoList extends React.Component {
             items: [],
         };        
         this.addItem = this.addItem.bind(this);
+        this.removeItem = this.removeItem.bind(this);
     }
 
     addItem(event) {
@@ -29,6 +30,17 @@ class TodoList extends React.Component {
         event.preventDefault();
     }
 
+    removeItem(key) {
+        let array = this.state.items.filter(
+            (x) => {
+                return (x[0] !== key);
+            }
+        )
+        this.setState({
+            items: array,
+        });
+    }
+
     render() {
         let self = this;
         return (
@@ -44,7 +56,7 @@ class TodoList extends React.Component {
                         <button type="submit">add</button>
                     </form>
                 </div>     
-                <TodoItems entries={this.state.items} />
+                <TodoItems entries={this.state.items} deleteItem={this.removeItem}/>
             </div>
         );
     }
