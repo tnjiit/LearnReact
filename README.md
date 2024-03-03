@@ -2,6 +2,54 @@
 
 Walking through coding examples of LearnReact
 
+## 03/03/2024
+
+1. Redux works on the principal of:
+    1. store
+    1. actions
+    1. reducer
+1. actions -> reducer -> updates state
+1. To integrate redux in react:
+    1. npm install redux
+    1. npm install react-redux
+    1. Store is the keeper of state
+        ```
+        store = redux.createStore(reducer);
+        ```
+    1. reducer is implemented as function that is: 
+            ``` 
+            function reducer(action, state) {
+                // reducer can not mutate state object. It must return a new state.
+                // action must have a parameter: type -> action.type
+                // return NEW_STATE;
+            }
+            ```
+    1. Provider wraps the main app and contains store:
+            ```
+            ReactDOM.render(
+                <react-redux.Provider store={store}>
+                    <App/>
+                <react-redux.Provider>,
+                ...
+            )
+            ```
+    1. Actions are mapped as 3 things:
+        1. mapStateToProps(state) which maps currrent store state to props
+            ```
+            function mapDispatchToProps(state) => {return PROP_STATE object};
+            ```
+        1. mapDispatchToProps(dispatch_functor) which returns a key-value pair of ```action-object: dispatch call```
+            ```
+            mapDispatcToProps(dispatch_functor) => {return PROP_DISPATCH object}
+            ```
+        1. A react connect higher order component (HOC):
+            ```
+            hoc = react-redux.connect(mapStateToProps, mapDispatchToProps)(<YOUR_REACT_COMPONENT>)
+            ```
+        1. YOUR_REACT_COMPONENT will have in props:
+            1. this.props.<members of PROP_STATE objects>
+            1. this.props.<members of PROP_DISPATCH object>
+
 ## 02/22/2024
 
 1. There are 2 options to make a React Webpage:
