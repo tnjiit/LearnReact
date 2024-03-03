@@ -18,7 +18,7 @@ Walking through coding examples of LearnReact
         ```
     1. reducer is implemented as function that is: 
             ``` 
-            function reducer(action, state) {
+            function reducer(state, action) {
                 // reducer can not mutate state object. It must return a new state.
                 // action must have a parameter: type -> action.type
                 // return NEW_STATE;

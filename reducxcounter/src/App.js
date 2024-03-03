@@ -14,6 +14,7 @@ var decreaseAction = { type: "decrease" };
 
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) { 
+    console.log("mapDispatchToProps", dispatch);
     return {
         increaseCount: function() {
             return dispatch(increaseAction);

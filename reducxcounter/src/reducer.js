@@ -1,5 +1,6 @@
 // Reducer
 function counter(state, action) { 
+    console.log("Reducer", state, action);
     if (state === undefined) {
         return { count: 0 }; 
     }
