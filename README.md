@@ -49,6 +49,12 @@ Walking through coding examples of LearnReact
         1. YOUR_REACT_COMPONENT will have in props:
             1. this.props.<members of PROP_STATE objects>
             1. this.props.<members of PROP_DISPATCH object>
+        1. Basically:
+            1. The PROP_DISPATCH keys are methods that YOUR_APP can call on events.
+            2. This via the mapDispatchToProps calls dispatch(REDUX_ACTION). dispatch is set by react-redux.
+            3. The REDUX_ACTON goes to REDUX_STORE.reducer
+            4. REDUX_STORE.reducer generates a new state for REDUX_STORE
+            5. YOUR_APP gets new state as this.props.PROP_STATE_KEY
 
 ## 02/22/2024
 
